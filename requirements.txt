@@ -1,0 +1,6 @@
+fastapi==0.110.0
+uvicorn==0.29.0
+depthai==2.24.0.0
+opencv-python==4.9.0.80
+ultralytics==8.1.0
+pydantic==2.6.4

@@ -1,0 +1,60 @@
+$ next dev
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.13:3000
+✓ Ready in 266ms
+
+937 | 		 */
+938 | 		const finishWithoutResolve = (log) => {
+939 | 			/**
+940 | 			 * @type {ErrorWithDetail}
+941 | 			 */
+942 | 			const error = new Error(`Can't ${message}`);
+                           ^
+error: Can't resolve 'tailwindcss-animate' in '/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/src/app'
+ details: "resolve 'tailwindcss-animate' in '/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/src/app'\n  Parsed request is a module\n  using description file: /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/package.json (relative path: ./src/app)\n    resolve as module\n      /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/src/app/node_modules doesn't exist or is not a directory\n      /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/src/node_modules doesn't exist or is not a directory\n      looking for modules in /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules\n        single file module\n          using description file: /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/package.json (relative path: ./node_modules/tailwindcss-animate)\n            no extension\n              /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate doesn't exist\n            .js\n              /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate.js doesn't exist\n            .json\n              /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate.json doesn't exist\n            .node\n              /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate.node doesn't exist\n            .ts\n              /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate.ts doesn't exist\n        /home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/tailwindcss-animate doesn't exist\n      /home/emirhan/Masaüstü/python/beko_demo_ui/node_modules doesn't exist or is not a directory\n      /home/emirhan/Masaüstü/python/node_modules doesn't exist or is not a directory\n      /home/emirhan/Masaüstü/node_modules doesn't exist or is not a directory\n      /home/emirhan/node_modules doesn't exist or is not a directory\n      /home/node_modules doesn't exist or is not a directory\n      /node_modules doesn't exist or is not a directory",
+
+      at finishWithoutResolve (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:942:22)
+      at <anonymous> (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:1111:5)
+      at <anonymous> (file:///home/emirhan/Masa%C3%BCst%C3%BC/python/beko_demo_ui/dashboard/node_modules/tapable/lib/HookCodeFactory.js:15:10)
+      at <anonymous> (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:1111:5)
+      at <anonymous> (file:///home/emirhan/Masa%C3%BCst%C3%BC/python/beko_demo_ui/dashboard/node_modules/tapable/lib/HookCodeFactory.js:27:10)
+      at <anonymous> (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:1111:5)
+      at <anonymous> (file:///home/emirhan/Masa%C3%BCst%C3%BC/python/beko_demo_ui/dashboard/node_modules/tapable/lib/HookCodeFactory.js:15:10)
+      at <anonymous> (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:1111:5)
+      at <anonymous> (file:///home/emirhan/Masa%C3%BCst%C3%BC/python/beko_demo_ui/dashboard/node_modules/tapable/lib/HookCodeFactory.js:15:10)
+      at <anonymous> (/home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/node_modules/enhanced-resolve/lib/Resolver.js:1111:5)
+
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to /tmp/next-panic-a5612e190c1e536d77bfcbd8f454cd5a.log.
+
+To help make Turbopack better, report this error by clicking here: https://bugs.nextjs.org/search?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20write%20app%20endpoint%20%2Fpage&body=Turbopack%20version%3A%20%60ee6e79b1%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0AFailed%20to%20write%20app%20endpoint%20%2Fpage%0A%0ACaused%20by%3A%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%0ADebug%20info%3A%0A-%20Execution%20of%20get_written_endpoint_with_issues_operation%20failed%0A-%20Execution%20of%20endpoint_write_to_disk%20failed%0A-%20Execution%20of%20%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aoutput%20failed%0A-%20Failed%20to%20write%20app%20endpoint%20%2Fpage%0A-%20Execution%20of%20%2Aall_asset_paths%20failed%0A-%20Execution%20of%20%2AAppEndpointOutput%3A%3Aoutput_assets%20failed%0A-%20Execution%20of%20AppEndpoint%3A%3Aoutput%20failed%0A-%20Execution%20of%20AppProject%3A%3Aapp_module_graphs%20failed%0A-%20Execution%20of%20%2A%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aadditional_entries%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Afrom_graphs%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Acreate%20failed%0A-%20Execution%20of%20SingleModuleGraph%3A%3Anew_with_entries_visited_intern%20failed%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20Execution%20of%20primary_chunkable_referenced_modules%20failed%0A-%20Execution%20of%20%3CCssModule%20as%20Module%3E%3A%3Areferences%20failed%0A-%20Execution%20of%20parse_css%20failed%0A-%20Execution%20of%20%3CPostCssTransformedAsset%20as%20Asset%3E%3A%3Acontent%20failed%0A-%20Execution%20of%20PostCssTransformedAsset%3A%3Aprocess%20failed%0A-%20Execution%20of%20evaluate_webpack_loader%20failed%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+ GET / 500 in 1565ms (next.js: 1445ms, application-code: 119ms)
+[browser] Uncaught Error: An unexpected Turbopack error occurred. Please see the output of `next dev` for more details.
+    at getServerError (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_0u_w_5s._.js:2075:62)
+    at hydrate/< (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:3677:27)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to /tmp/next-panic-a5612e190c1e536d77bfcbd8f454cd5a.log.
+
+To help make Turbopack better, report this error by clicking here: https://bugs.nextjs.org/search?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20write%20app%20endpoint%20%2Fpage&body=Turbopack%20version%3A%20%60ee6e79b1%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0AFailed%20to%20write%20app%20endpoint%20%2Fpage%0A%0ACaused%20by%3A%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%0ADebug%20info%3A%0A-%20Execution%20of%20get_written_endpoint_with_issues_operation%20failed%0A-%20Execution%20of%20endpoint_write_to_disk%20failed%0A-%20Execution%20of%20%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aoutput%20failed%0A-%20Failed%20to%20write%20app%20endpoint%20%2Fpage%0A-%20Execution%20of%20%2Aall_asset_paths%20failed%0A-%20Execution%20of%20%2AAppEndpointOutput%3A%3Aoutput_assets%20failed%0A-%20Execution%20of%20AppEndpoint%3A%3Aoutput%20failed%0A-%20Execution%20of%20AppProject%3A%3Aapp_module_graphs%20failed%0A-%20Execution%20of%20%2A%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aadditional_entries%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Afrom_graphs%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Acreate%20failed%0A-%20Execution%20of%20SingleModuleGraph%3A%3Anew_with_entries_visited_intern%20failed%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20Execution%20of%20primary_chunkable_referenced_modules%20failed%0A-%20Execution%20of%20%3CCssModule%20as%20Module%3E%3A%3Areferences%20failed%0A-%20Execution%20of%20parse_css%20failed%0A-%20Execution%20of%20%3CPostCssTransformedAsset%20as%20Asset%3E%3A%3Acontent%20failed%0A-%20Execution%20of%20PostCssTransformedAsset%3A%3Aprocess%20failed%0A-%20Execution%20of%20evaluate_webpack_loader%20failed%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+ GET / 500 in 29ms (next.js: 5ms, application-code: 25ms)
+[browser] Uncaught Error: An unexpected Turbopack error occurred. Please see the output of `next dev` for more details.
+    at getServerError (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_0u_w_5s._.js:2075:62)
+    at hydrate/< (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:3677:27)
+
+-----
+[1m[31mFATAL[39m[0m: An unexpected Turbopack error occurred. A panic log has been written to /tmp/next-panic-a5612e190c1e536d77bfcbd8f454cd5a.log.
+
+To help make Turbopack better, report this error by clicking here: https://bugs.nextjs.org/search?category=turbopack-error-report&title=Turbopack%20Error%3A%20Failed%20to%20write%20app%20endpoint%20%2Fpage&body=Turbopack%20version%3A%20%60ee6e79b1%60%0ANext.js%20version%3A%20%600.0.0%60%0A%0AError%20message%3A%0A%60%60%60%0AFailed%20to%20write%20app%20endpoint%20%2Fpage%0A%0ACaused%20by%3A%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%0ADebug%20info%3A%0A-%20Execution%20of%20get_written_endpoint_with_issues_operation%20failed%0A-%20Execution%20of%20endpoint_write_to_disk%20failed%0A-%20Execution%20of%20%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aoutput%20failed%0A-%20Failed%20to%20write%20app%20endpoint%20%2Fpage%0A-%20Execution%20of%20%2Aall_asset_paths%20failed%0A-%20Execution%20of%20%2AAppEndpointOutput%3A%3Aoutput_assets%20failed%0A-%20Execution%20of%20AppEndpoint%3A%3Aoutput%20failed%0A-%20Execution%20of%20AppProject%3A%3Aapp_module_graphs%20failed%0A-%20Execution%20of%20%2A%3CAppEndpoint%20as%20Endpoint%3E%3A%3Aadditional_entries%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Afrom_graphs%20failed%0A-%20Execution%20of%20ModuleGraph%3A%3Acreate%20failed%0A-%20Execution%20of%20SingleModuleGraph%3A%3Anew_with_entries_visited_intern%20failed%0A-%20%5Bproject%5D%2Fsrc%2Fapp%2Fglobals.css%20%5Bapp-client%5D%20%28css%29%0A-%20Execution%20of%20primary_chunkable_referenced_modules%20failed%0A-%20Execution%20of%20%3CCssModule%20as%20Module%3E%3A%3Areferences%20failed%0A-%20Execution%20of%20parse_css%20failed%0A-%20Execution%20of%20%3CPostCssTransformedAsset%20as%20Asset%3E%3A%3Acontent%20failed%0A-%20Execution%20of%20PostCssTransformedAsset%3A%3Aprocess%20failed%0A-%20Execution%20of%20evaluate_webpack_loader%20failed%0A-%20invalid%20type%3A%20null%2C%20expected%20a%20string%0A%60%60%60&labels=Turbopack,Turbopack%20Panic%20Backtrace
+-----
+
+ GET / 500 in 27ms (next.js: 4ms, application-code: 23ms)
+[browser] Uncaught Error: An unexpected Turbopack error occurred. Please see the output of `next dev` for more details.
+    at getServerError (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_0u_w_5s._.js:2075:62)
+    at hydrate/< (file:///home/emirhan/Masaüstü/python/beko_demo_ui/dashboard/.next/dev/static/chunks/node_modules_next_dist_client_0pe1dg-._.js:3677:27)
