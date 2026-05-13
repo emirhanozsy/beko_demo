@@ -20,7 +20,7 @@ print("🚀 Beko Vision AI Backend Başlatılıyor...", flush=True)
 
 # ===================== AYARLAR =====================
 CAMERA_IP = "192.168.0.68"
-MODEL_PATH = "best_v3.pt"
+MODEL_PATH = "best.pt"
 SAVE_DIR = "saved_frames"
 
 FOCUS_INITIAL = 120
@@ -53,6 +53,7 @@ class CameraState:
         self.sharpness = 1
         self.fps = 0
         self.latest_frame = None
+        self.latest_raw_4k = None  # Store clean 4K BGR frame
         self.running = True
         self.q_ctrl = None
 
@@ -93,7 +94,7 @@ def camera_thread():
     video_enc.setDefaultProfilePreset(30, dai.VideoEncoderProperties.Profile.MJPEG)
     video_enc.setQuality(80)
 
-    cam_out = cam.requestOutput(size=(3840, 2160), type=dai.ImgFrame.Type.NV12, fps=30)
+    cam_out = cam.requestOutput(size=(3840, 2160), type=dai.ImgFrame.Type.NV12, fps=15)
     cam_out.link(video_enc.input)
 
     q_stream = video_enc.bitstream.createOutputQueue(maxSize=4, blocking=False)
@@ -112,21 +113,24 @@ def camera_thread():
             in_encoded = q_stream.tryGet()
             if in_encoded is not None:
                 frame_count += 1
+                # Decode 4K Frame
                 raw_frame = cv2.imdecode(in_encoded.getData(), cv2.IMREAD_COLOR)
+                state.latest_raw_4k = raw_frame.copy() # Store clean 4K frame for saving
                 
-                # Kasma sorununu çözmek için 1080p'ye küçült
-                raw_frame = cv2.resize(raw_frame, (1920, 1080))
-                
-                # 30 FPS akışta saniyede 5 kez detection yapmak için her 6 karede bir yap
-                if frame_count % 6 == 0:
+                # 15 FPS akışta saniyede 5 kez detection yapmak için her 3 karede bir yap
+                if frame_count % 3 == 0:
+                    # Detection directly on 4K frame
                     results = model(raw_frame, stream=True, verbose=False, imgsz=640)
                     latest_results = list(results)
                     inference_count += 1
 
-                # Sonuçları çiz (her karede son detection sonuçlarını kullan)
+                # Plot results on 4K frame
                 display_frame = raw_frame.copy()
                 for r in latest_results:
                     display_frame = r.plot()
+
+                # Resize ONLY for streaming (1080p)
+                stream_frame = cv2.resize(display_frame, (1920, 1080))
 
                 # FPS Calculation
                 if time.time() - start_time >= 1.0:
@@ -136,8 +140,8 @@ def camera_thread():
                     inference_count = 0
                     start_time = time.time()
 
-                # Encode to JPEG for streaming
-                _, jpeg = cv2.imencode('.jpg', display_frame)
+                # Encode to JPEG (1080p) for streaming
+                _, jpeg = cv2.imencode('.jpg', stream_frame)
                 state.latest_frame = jpeg.tobytes()
 
     finally:
@@ -207,17 +211,17 @@ async def update_control(update: ControlUpdate):
 
 @app.post("/capture")
 async def capture_frame():
-    if state.latest_frame is None:
+    if state.latest_raw_4k is None:
         return {"error": "No frame available"}
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"capture_{timestamp}.jpg"
+    filename = f"capture_4k_{timestamp}.jpg"
     path = os.path.join(SAVE_DIR, filename)
     
-    with open(path, "wb") as f:
-        f.write(state.latest_frame)
+    # Save the 4K raw frame
+    cv2.imwrite(path, state.latest_raw_4k)
     
-    return {"status": "saved", "path": path, "filename": filename}
+    return {"status": "saved", "path": path, "filename": filename, "resolution": "3840x2160"}
 
 if __name__ == "__main__":
     t = threading.Thread(target=camera_thread, daemon=True)

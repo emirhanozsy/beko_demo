@@ -1,0 +1,7 @@
+*.jpg
+*.png
+*.log
+dashboard/node_modules
+backend.log
+dashboard/.next
+*.pt
